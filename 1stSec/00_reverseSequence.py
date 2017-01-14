@@ -1,3 +1,6 @@
-str = "stressed"
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# 00.py
 
-print str[::-1]
+str = "stressed"
+print(str[::-1])
