@@ -4,8 +4,7 @@
 
 import sys
 
-f = open(sys.argv[1])
-lines = f.readlines()
+with open(sys.argv[1]) as f:
+    lines = f.readlines()
 print(len(lines))
 
-f.close
