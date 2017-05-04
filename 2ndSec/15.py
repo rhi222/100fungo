@@ -9,6 +9,3 @@ with open(sys.argv[1]) as f :
 
 for line in lines [len(lines) - int(sys.argv[2]):]:
     print(line, end='')
-
-
-
