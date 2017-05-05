@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# 37.py
+# 39.py
 
 from q30 import tabbed_str_to_dict
 from q36 import get_frequency
@@ -18,13 +18,16 @@ if __name__ == '__main__':
     frequency = get_frequency([morpheme['surface'] for morpheme in morphemes])
     frequency = sorted(frequency.items(), key=lambda x:x[1], reverse=True)
     fig = plt.figure(figsize=(10, 6))
-    words = [f[0] for f in frequency[0:10]]
-    x_pos = np.arange(len(words))
-    fp = FontProperties(fname=r'/Library/Fonts/ヒラギノ丸ゴ ProN W4.ttc', size=14)
-    ax1 = fig.add_subplot(131)
-    ax1.bar(x_pos, [f[1] for f in frequency[0:10]], align='center', alpha=0.4)
-    ax1.set_xticks(x_pos)
-    ax1.set_xticklabels(words, fontproperties=fp)
-    ax1.set_ylabel('Frequency')
-    ax1.set_title('Top 10 frequent words')
+    freq = list(dict(frequency).values())
+    freq.sort(reverse=True)
+    rank = list(range(1, len(freq) + 1))
+
+    ax3 = fig.add_subplot(133)
+    ax3.plot(freq, rank)
+    ax3.set_xlabel('Rank')
+    ax3.set_ylabel('Frequency')
+    ax3.set_title('Zipf low')
+    ax3.set_xscale('log')
+    ax3.set_yscale('log')
+    fig.savefig('morphological_analysis.png')
     plt.show()
